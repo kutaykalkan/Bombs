@@ -1,0 +1,70 @@
+
+Some number of bombs sit in a linear chamber, at time 0. At time 1, the bombs explode. Each
+sends one piece of shrapnel to the left and one piece of shrapnel to the right. At each
+successive time iteration, the pieces move at a constant speed on their due courses, passing
+through each other unimpeded, until all have left the chamber.! !
+You are to create a NetHack-esque animation of this process. Given a String describing the
+initial locations of the bombs, and an Integer describing the bombs’ concussive power, you are
+to compute the locations of the pieces of shrapnel at each time iteration, terminating once all
+have left the chamber.! !
+Your method will take as input a String bombs and an Integer force. bombs will have a "B" at
+each position containing a bomb, and a "." at each empty position. At time 1, the B’s disappear,
+sending one "<" piece of sharpnel to the left, and one ">" piece of shrapnel to the right, each
+moving at the constant speed force. If a "<" and ">" ever occupy the same position at the
+same time, they will be collectively represented by a single "X".! !
+Your method will return an array of Strings in which each successive element shows the
+occupied locations at each time unit. The first element should show the initial locations of the
+bombs, using "B" and "." characters. The last element should show the empty chamber at the
+first time that it becomes empty.! !
+
+• bombs should contain between 1 and 50 characters, inclusive.!
+• Each character in bombs should be either a "." or a “B”.!
+• force should be between 1 and 10, inclusive.
+Examples:! !
+1. explode("..B....", 2)
+Returns:
+["..B....",
+"<...>..",
+"......>",
+"......."]!
+2. explode("..B.B..B", 10)
+Returns:
+["..B.B..B",
+"........"]!
+3. explode("B.B.B.BB.", 2)
+Returns:
+["B.B.B.BB.",
+"<.X.X<>.>",
+"<.<<>.>.>",
+"<<....>.>",
+"........>",
+"........."]!
+4. explode("..B.B..B", 1)
+Returns:
+["..B.B..B",
+".<.X.><.",
+"<.<.><>.",
+".<..<>.>",
+"<..<..>.",
+"..<....>",
+".<......",
+"<.......",
+"........"]!
+5. explode("..B.BB..B.B..B...", 1)
+Returns:
+["..B.BB..B.B..B...",
+".<.X<>><.X.><.>..",
+"<.<<>.X><.><>..>.",
+".<<..X.X>.<>.>..>",
+"<<..<.X.>X..>.>..",
+"<..<.<.><>>..>.>.",
+"..<.<..<>.>>..>.>",
+".<.<..<..>.>>..>.",
+"<.<..<....>.>>..>",
+".<..<......>.>>..",
+"<..<........>.>>.",
+"..<..........>.>>",
+".<............>.>",
+"<..............>.",
+"................>",
+"................."]
